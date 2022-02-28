@@ -1,0 +1,12 @@
+.index_link {
+    font-size: 90%;
+    font-weight:  bold;
+    text-decoration: underline;
+    color: #e91e63;
+    text-align:center
+}
+
+
+.table td, .table th {
+    white-space: normal;
+}
