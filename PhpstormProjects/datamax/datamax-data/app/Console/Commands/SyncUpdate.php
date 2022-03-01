@@ -65,8 +65,10 @@ class SyncUpdate extends Command
                         'popular_name_previous_name' => $response["popularName_previousName"]
                     ]);
             DB::commit();
+            echo "成功しました";
         } catch (Exception) {
             DB::rollback();
+            echo "失敗しました。";
         }
     }
 

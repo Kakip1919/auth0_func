@@ -9,6 +9,7 @@
 @include('admin.parts.sidemenu',['active'=>'corpo'])
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     @include('admin.parts.navbar')
+
     <div class="container-fluid py-1">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -16,7 +17,7 @@
             </ol>
         </nav>
         @if (session('flash_message'))
-            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <span
                                     class="alert-text text-white"><strong>{{ session('flash_message') }}</strong></span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">

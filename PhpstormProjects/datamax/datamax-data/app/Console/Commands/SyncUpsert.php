@@ -34,12 +34,14 @@ class SyncUpsert extends Command
         parent::__construct();
     }
 
-    private function upsert($from_date, $to_date, $divide_size)
+    private function upsert($from_date, $to_date, $divide_size): void
     {
+        $c = 0;
         for ($i = 1; $i < $divide_size + 1; $i++) {
             $responses = Http::get("https://web-api.invoice-kohyo.nta.go.jp/1/diff?id=KSD7DkG9pnH3v&from=$from_date&to=$to_date&type=21&divide=$i")->json();
-
             foreach ($responses["announcement"] as $response) {
+                $c++;
+                echo $c . "\n";
                 try {
                     DB::beginTransaction();
                     DB::table("corpo_data")
@@ -70,8 +72,10 @@ class SyncUpsert extends Command
                                 "popular_name_previous_name" => $response["popularName_previousName"]
                             ]);
                     DB::commit();
+                    echo "成功しました:";
                 } catch (Exception) {
                     DB::rollback();
+                    echo "失敗しました";
                 }
             }
         }
