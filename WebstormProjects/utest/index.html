@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="min.css">
+</head>
+<body>
+
+<div id="app">
+    {{ message }}
+</div>
+
+<div id="app-2">
+            <span v-bind:title="message">
+                今何時？
+            </span>
+</div>
+
+<div id="app-3">
+            <span v-show="seen">
+                見えるかな？
+            </span>
+</div>
+
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">メッセージをひっくり返すよ</button>
+</div>
+
+<div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+
+<div id="app-7">
+    <alert-box>IDが未入力です。</alert-box>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+
+    let app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello World!"
+        }
+    })
+
+    let app2 = new Vue({
+        el: "#app-2",
+        data: {
+            message: "現在時刻は" + new Date().toLocaleString()
+        }
+    })
+
+    let app3 = new Vue({
+        el: "#app-3",
+        data: {
+            seen: true
+        }
+    })
+
+    let app4 = new Vue({
+        el: "#app-4",
+        data: {
+            todos: [
+                {text: "ringo"},
+                {text: "orange"},
+                {text: "grape"}
+            ]
+        }
+    })
+
+    let app5 = new Vue({
+        el: "#app-5",
+        data: {
+            message: "stressed"
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split("").reverse().join("")
+            }
+        }
+    })
+
+    let app6 = new Vue({
+        el: "#app-6",
+        data:{
+            message: "こんにちは！"
+        }
+    })
+
+
+</script>
+<script src="index.js"></script>
+
+</body>
+</html>
