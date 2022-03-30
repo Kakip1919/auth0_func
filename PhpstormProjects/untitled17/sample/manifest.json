@@ -1,0 +1,10 @@
+{
+  "name": "backlog sample!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab","scripting"],
+  "background": {
+    "service_worker": "add_sample.js"
+  },
+  "action": {}
+}
